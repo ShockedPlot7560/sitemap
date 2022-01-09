@@ -27,7 +27,7 @@ class Sitemap{
 	}
 
 	public function encodeToXml() : string{
-		$base = "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">{content}</urlset>\n";
+		$base = "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n{content}</urlset>";
 		$content = "";
 		foreach ($this->getUrls() as $url) {
 			$content .= $url->convertToXml();

@@ -56,7 +56,7 @@ class Url{
 	}
 
 	public function convertToXml() : string{
-		$base = "     <url>\n          %{content}      </url>\n";
+		$base = "     <url>\n%{content}     </url>\n";
 		$content = "          <loc>" . $this->getLocation() . "</loc>\n";
 		if($this->getChangeFreq() !== null){
 			$content .= "          <changefreq>" . $this->getChangeFreq()->__toString() . "</changefreq>\n";
