@@ -56,19 +56,19 @@ class Url{
 	}
 
 	public function convertToXml() : string{
-		$base = "<url>%{content}</url>\n";
-		$content = "<loc>" . $this->getLocation() . "</loc>\n";
+		$base = "     <url>\n          %{content}      </url>\n";
+		$content = "          <loc>" . $this->getLocation() . "</loc>\n";
 		if($this->getChangeFreq() !== null){
-			$content .= "<changefreq>" . $this->getChangeFreq()->__toString() . "</changefreq>\n";
+			$content .= "          <changefreq>" . $this->getChangeFreq()->__toString() . "</changefreq>\n";
 		}
 		if($this->getLastMod() !== null){
-			$content .= "<lastmod>" . $this->getLastMod()->format("Y-m-dTH:i:sP") . "</lastmod>\n";
+			$content .= "          <lastmod>" . $this->getLastMod()->format("Y-m-dTH:i:sP") . "</lastmod>\n";
 		}
 		if($this->getPriority() !== null){
 			if($this->getPriority() < 0.0 && $this->getPriority() > 1.0){
 				throw new Exception("Priority must be in range 0.0-1.0");
 			}
-			$content .= "<priority>" . $this->getPriority() . "</priority>\n";
+			$content .= "          <priority>" . $this->getPriority() . "</priority>\n";
 		}
 		return str_replace("%{content}", $content, $base);
 	}
